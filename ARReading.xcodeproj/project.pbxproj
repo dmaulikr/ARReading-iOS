@@ -13,9 +13,6 @@
 		325763A616E47F9500CFC6F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 325763A416E47F9500CFC6F0 /* InfoPlist.strings */; };
 		325763A816E47F9500CFC6F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 325763A716E47F9500CFC6F0 /* main.m */; };
 		325763AC16E47F9500CFC6F0 /* ARRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 325763AB16E47F9500CFC6F0 /* ARRAppDelegate.m */; };
-		325763AE16E47F9500CFC6F0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 325763AD16E47F9500CFC6F0 /* Default.png */; };
-		325763B016E47F9500CFC6F0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 325763AF16E47F9500CFC6F0 /* Default@2x.png */; };
-		325763B216E47F9500CFC6F0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 325763B116E47F9500CFC6F0 /* Default-568h@2x.png */; };
 		325764BB16E486C300CFC6F0 /* CRChainCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325763C316E486C300CFC6F0 /* CRChainCode.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		325764BC16E486C300CFC6F0 /* CRChainCodeBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325763C516E486C300CFC6F0 /* CRChainCodeBlob.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		325764BD16E486C300CFC6F0 /* CRChainCodeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325763C716E486C300CFC6F0 /* CRChainCodeElement.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -37,6 +34,13 @@
 		3257655D16E48B8000CFC6F0 /* CC3GLMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257655516E48B8000CFC6F0 /* CC3GLMatrix.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3257655E16E48B8000CFC6F0 /* CC3Kazmath.c in Sources */ = {isa = PBXBuildFile; fileRef = 3257655616E48B8000CFC6F0 /* CC3Kazmath.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3257655F16E48B8000CFC6F0 /* CC3Math.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257655A16E48B8000CFC6F0 /* CC3Math.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3257656416E4911B00CFC6F0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3257656016E4911B00CFC6F0 /* Default-568h@2x.png */; };
+		3257656516E4911B00CFC6F0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3257656116E4911B00CFC6F0 /* Default.png */; };
+		3257656616E4911B00CFC6F0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3257656216E4911B00CFC6F0 /* Default@2x.png */; };
+		3257657B16E4A32700CFC6F0 /* Storyboard-iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3257657A16E4A32700CFC6F0 /* Storyboard-iPhone.storyboard */; };
+		3257657D16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3257657C16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard */; };
+		3257658216E4AAEA00CFC6F0 /* ARRCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257658116E4AAEA00CFC6F0 /* ARRCameraViewController.mm */; };
+		3257658916E4AECC00CFC6F0 /* ARRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,15 +48,11 @@
 		3257639B16E47F9500CFC6F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3257639D16E47F9500CFC6F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3257639F16E47F9500CFC6F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		325763A316E47F9500CFC6F0 /* ARReading-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ARReading-Info.plist"; sourceTree = "<group>"; };
 		325763A516E47F9500CFC6F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		325763A716E47F9500CFC6F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		325763A916E47F9500CFC6F0 /* ARReading-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARReading-Prefix.pch"; sourceTree = "<group>"; };
 		325763AA16E47F9500CFC6F0 /* ARRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARRAppDelegate.h; sourceTree = "<group>"; };
 		325763AB16E47F9500CFC6F0 /* ARRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARRAppDelegate.m; sourceTree = "<group>"; };
-		325763AD16E47F9500CFC6F0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		325763AF16E47F9500CFC6F0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		325763B116E47F9500CFC6F0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		325763C216E486C300CFC6F0 /* CoreAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAR.h; sourceTree = "<group>"; };
 		325763C316E486C300CFC6F0 /* CRChainCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRChainCode.cpp; sourceTree = "<group>"; };
 		325763C416E486C300CFC6F0 /* CRChainCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRChainCode.h; sourceTree = "<group>"; };
@@ -93,6 +93,16 @@
 		3257655916E48B8000CFC6F0 /* CC3Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Math.h; sourceTree = "<group>"; };
 		3257655A16E48B8000CFC6F0 /* CC3Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3Math.m; sourceTree = "<group>"; };
 		3257655B16E48B8000CFC6F0 /* ccTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccTypes.h; sourceTree = "<group>"; };
+		3257656016E4911B00CFC6F0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resource/Default-568h@2x.png"; sourceTree = "<group>"; };
+		3257656116E4911B00CFC6F0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resource/Default.png; sourceTree = "<group>"; };
+		3257656216E4911B00CFC6F0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resource/Default@2x.png"; sourceTree = "<group>"; };
+		3257656816E4916600CFC6F0 /* ARReading-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ARReading-Info.plist"; sourceTree = "<group>"; };
+		3257657A16E4A32700CFC6F0 /* Storyboard-iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPhone.storyboard"; sourceTree = "<group>"; };
+		3257657C16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
+		3257658116E4AAEA00CFC6F0 /* ARRCameraViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARRCameraViewController.mm; sourceTree = "<group>"; };
+		3257658316E4AB2400CFC6F0 /* ARRCameraViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ARRCameraViewController.hpp; sourceTree = "<group>"; };
+		3257658716E4AECC00CFC6F0 /* ARRMainViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ARRMainViewController.hpp; sourceTree = "<group>"; };
+		3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARRMainViewController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +163,14 @@
 		325763A116E47F9500CFC6F0 /* ARReading */ = {
 			isa = PBXGroup;
 			children = (
+				3257656C16E4922200CFC6F0 /* GL */,
+				3257656B16E4921B00CFC6F0 /* Camera */,
+				3257656A16E4920F00CFC6F0 /* ViewControllers */,
 				325763AA16E47F9500CFC6F0 /* ARRAppDelegate.h */,
 				325763AB16E47F9500CFC6F0 /* ARRAppDelegate.m */,
 				325763A216E47F9500CFC6F0 /* Supporting Files */,
+				3257657A16E4A32700CFC6F0 /* Storyboard-iPhone.storyboard */,
+				3257657C16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard */,
 			);
 			path = ARReading;
 			sourceTree = "<group>";
@@ -163,13 +178,13 @@
 		325763A216E47F9500CFC6F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				325763A316E47F9500CFC6F0 /* ARReading-Info.plist */,
+				3257656816E4916600CFC6F0 /* ARReading-Info.plist */,
 				325763A416E47F9500CFC6F0 /* InfoPlist.strings */,
 				325763A716E47F9500CFC6F0 /* main.m */,
 				325763A916E47F9500CFC6F0 /* ARReading-Prefix.pch */,
-				325763AD16E47F9500CFC6F0 /* Default.png */,
-				325763AF16E47F9500CFC6F0 /* Default@2x.png */,
-				325763B116E47F9500CFC6F0 /* Default-568h@2x.png */,
+				3257656016E4911B00CFC6F0 /* Default-568h@2x.png */,
+				3257656116E4911B00CFC6F0 /* Default.png */,
+				3257656216E4911B00CFC6F0 /* Default@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -238,6 +253,31 @@
 			path = Cocos3DMathLib;
 			sourceTree = "<group>";
 		};
+		3257656A16E4920F00CFC6F0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3257658716E4AECC00CFC6F0 /* ARRMainViewController.hpp */,
+				3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3257656B16E4921B00CFC6F0 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				3257658316E4AB2400CFC6F0 /* ARRCameraViewController.hpp */,
+				3257658116E4AAEA00CFC6F0 /* ARRCameraViewController.mm */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		3257656C16E4922200CFC6F0 /* GL */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,9 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				325763A616E47F9500CFC6F0 /* InfoPlist.strings in Resources */,
-				325763AE16E47F9500CFC6F0 /* Default.png in Resources */,
-				325763B016E47F9500CFC6F0 /* Default@2x.png in Resources */,
-				325763B216E47F9500CFC6F0 /* Default-568h@2x.png in Resources */,
+				3257656416E4911B00CFC6F0 /* Default-568h@2x.png in Resources */,
+				3257656516E4911B00CFC6F0 /* Default.png in Resources */,
+				3257656616E4911B00CFC6F0 /* Default@2x.png in Resources */,
+				3257657B16E4A32700CFC6F0 /* Storyboard-iPhone.storyboard in Resources */,
+				3257657D16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +380,8 @@
 				3257655D16E48B8000CFC6F0 /* CC3GLMatrix.m in Sources */,
 				3257655E16E48B8000CFC6F0 /* CC3Kazmath.c in Sources */,
 				3257655F16E48B8000CFC6F0 /* CC3Math.m in Sources */,
+				3257658216E4AAEA00CFC6F0 /* ARRCameraViewController.mm in Sources */,
+				3257658916E4AECC00CFC6F0 /* ARRMainViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
