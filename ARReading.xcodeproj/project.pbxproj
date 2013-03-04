@@ -41,6 +41,7 @@
 		3257657D16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3257657C16E4A33A00CFC6F0 /* Storyboard-iPad.storyboard */; };
 		3257658216E4AAEA00CFC6F0 /* ARRCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257658116E4AAEA00CFC6F0 /* ARRCameraViewController.mm */; };
 		3257658916E4AECC00CFC6F0 /* ARRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */; };
+		3257658C16E4B10E00CFC6F0 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257658B16E4B10E00CFC6F0 /* GLView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,8 @@
 		3257658316E4AB2400CFC6F0 /* ARRCameraViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ARRCameraViewController.hpp; sourceTree = "<group>"; };
 		3257658716E4AECC00CFC6F0 /* ARRMainViewController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ARRMainViewController.hpp; sourceTree = "<group>"; };
 		3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARRMainViewController.mm; sourceTree = "<group>"; };
+		3257658A16E4B10E00CFC6F0 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
+		3257658B16E4B10E00CFC6F0 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +277,8 @@
 		3257656C16E4922200CFC6F0 /* GL */ = {
 			isa = PBXGroup;
 			children = (
+				3257658A16E4B10E00CFC6F0 /* GLView.h */,
+				3257658B16E4B10E00CFC6F0 /* GLView.m */,
 			);
 			path = GL;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				3257655F16E48B8000CFC6F0 /* CC3Math.m in Sources */,
 				3257658216E4AAEA00CFC6F0 /* ARRCameraViewController.mm in Sources */,
 				3257658916E4AECC00CFC6F0 /* ARRMainViewController.mm in Sources */,
+				3257658C16E4B10E00CFC6F0 /* GLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
