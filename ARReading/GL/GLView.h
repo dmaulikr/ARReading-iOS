@@ -36,7 +36,7 @@
 -(void)stopAnimation;
 
 // for override
--(void)setupGLView;
+//-(void)setupGLView;
 -(void)render;
 
 @end

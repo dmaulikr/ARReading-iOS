@@ -7,6 +7,7 @@
 //
 
 #import "ARRCameraViewController.hpp"
+#import "ARRGLView.hpp"
 
 #import "QuartzHelpLibrary.h"
 
@@ -22,15 +23,16 @@ static float focalLength = 457.89;
 		codeListRef = new CRCodeList();
 	
 	// OpenGL overlaid content view
-//	CGRect r = self.view.frame;
-//	r.size.height = r.size.width / 360.0 * 480.0;
-//	myGLView = [[GLOverlayView alloc] initWithFrame:r];
-//	[myGLView setCameraFrameSize:CGSizeMake(480, 360)];
-//	[myGLView setupOpenGLViewWithFocalX:focalLength focalY:focalLength];
-//	[myGLView startAnimation];  // startAnimation?
-//	[self.view addSubview:myGLView];
-//	[myGLView release];
-//	[myGLView setCodeListRef:codeListRef];  // 使 GLView 能得到 识别出的 Code的矩阵
+	CGRect r = self.view.frame;
+	r.size.height = r.size.width / 360.0 * 480.0;
+	glView = [[ARRGLView alloc] initWithFrame:r];
+    
+	[glView setCameraFrameSize:CGSizeMake(480, 360)];
+    [glView setupOpenGLViewWithFocalX:focalLength focalY:focalLength];
+	[glView startAnimation];  // startAnimation?
+    
+	[self.view addSubview:glView];
+	[glView setCodeListRef:codeListRef];  // 使 GLView 能得到 识别出的 Code的矩阵
 }
 
 // Main Loop
@@ -100,7 +102,7 @@ static float focalLength = 457.89;
 		}
 	}
 	
-//	[myGLView drawView];        // 这里 画 GL
+	[glView render];        // 这里 画 GL
 	
 	SAFE_DELETE(chaincode);
 	_CRToc();

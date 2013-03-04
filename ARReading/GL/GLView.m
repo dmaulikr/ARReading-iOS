@@ -151,7 +151,7 @@
 			// if the system version runtime check for CADisplayLink exists in -initWithCoder:. The runtime check ensures this code will
 			// not be called in system versions earlier than 3.1.
 			
-			_displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(drawView)];
+			_displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(render)];
 			[_displayLink setFrameInterval:_animationFrameInterval];
 			[_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 		}
@@ -190,26 +190,25 @@
 #pragma mark -
 #pragma mark Override
 
-- (id)initWithCoder:(NSCoder*)coder {
-    if ((self = [super initWithCoder:coder])) {
-		if (![self initializeOpenGLES]) {
-            self = nil;
-			return nil;
-		}
-		[self setupGLView];
-	}
-	
-	return self;
-}
+//- (id)initWithCoder:(NSCoder*)coder {
+//    if ((self = [super initWithCoder:coder])) {
+//		if (![self initializeOpenGLES]) {  
+//            self = nil;
+//			return nil;
+//		}
+//		[self setupGLView];
+//	}
+//	return self;
+//}
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		if (![self initializeOpenGLES]) {
+		if (![self initializeOpenGLES]) {    // init
             self = nil;
 			return nil;
 		}
-		[self setupGLView];
+		[self setupGLView];     // setup GLView
 	}
 	return self;
 }

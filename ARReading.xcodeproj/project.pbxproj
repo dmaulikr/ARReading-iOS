@@ -42,6 +42,10 @@
 		3257658216E4AAEA00CFC6F0 /* ARRCameraViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257658116E4AAEA00CFC6F0 /* ARRCameraViewController.mm */; };
 		3257658916E4AECC00CFC6F0 /* ARRMainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */; };
 		3257658C16E4B10E00CFC6F0 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257658B16E4B10E00CFC6F0 /* GLView.m */; };
+		3257659216E501C700CFC6F0 /* ARRGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3257659116E501C600CFC6F0 /* ARRGLView.mm */; };
+		3257659516E5098D00CFC6F0 /* GLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257659416E5098D00CFC6F0 /* GLShader.m */; };
+		3257659816E50CDC00CFC6F0 /* ARRSimpleGLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257659716E50CDB00CFC6F0 /* ARRSimpleGLShader.m */; };
+		3257659B16E5150900CFC6F0 /* ARRGLVBOSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257659A16E5150900CFC6F0 /* ARRGLVBOSimple.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +110,14 @@
 		3257658816E4AECC00CFC6F0 /* ARRMainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARRMainViewController.mm; sourceTree = "<group>"; };
 		3257658A16E4B10E00CFC6F0 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
 		3257658B16E4B10E00CFC6F0 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
+		3257659016E501C600CFC6F0 /* ARRGLView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ARRGLView.hpp; sourceTree = "<group>"; };
+		3257659116E501C600CFC6F0 /* ARRGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ARRGLView.mm; sourceTree = "<group>"; };
+		3257659316E5098D00CFC6F0 /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
+		3257659416E5098D00CFC6F0 /* GLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShader.m; sourceTree = "<group>"; };
+		3257659616E50CDB00CFC6F0 /* ARRSimpleGLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRSimpleGLShader.h; sourceTree = "<group>"; };
+		3257659716E50CDB00CFC6F0 /* ARRSimpleGLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRSimpleGLShader.m; sourceTree = "<group>"; };
+		3257659916E5150900CFC6F0 /* ARRGLVBOSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRGLVBOSimple.h; sourceTree = "<group>"; };
+		3257659A16E5150900CFC6F0 /* ARRGLVBOSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRGLVBOSimple.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,8 +289,16 @@
 		3257656C16E4922200CFC6F0 /* GL */ = {
 			isa = PBXGroup;
 			children = (
+				3257659016E501C600CFC6F0 /* ARRGLView.hpp */,
+				3257659116E501C600CFC6F0 /* ARRGLView.mm */,
 				3257658A16E4B10E00CFC6F0 /* GLView.h */,
 				3257658B16E4B10E00CFC6F0 /* GLView.m */,
+				3257659316E5098D00CFC6F0 /* GLShader.h */,
+				3257659416E5098D00CFC6F0 /* GLShader.m */,
+				3257659616E50CDB00CFC6F0 /* ARRSimpleGLShader.h */,
+				3257659716E50CDB00CFC6F0 /* ARRSimpleGLShader.m */,
+				3257659916E5150900CFC6F0 /* ARRGLVBOSimple.h */,
+				3257659A16E5150900CFC6F0 /* ARRGLVBOSimple.m */,
 			);
 			path = GL;
 			sourceTree = "<group>";
@@ -388,6 +408,10 @@
 				3257658216E4AAEA00CFC6F0 /* ARRCameraViewController.mm in Sources */,
 				3257658916E4AECC00CFC6F0 /* ARRMainViewController.mm in Sources */,
 				3257658C16E4B10E00CFC6F0 /* GLView.m in Sources */,
+				3257659216E501C700CFC6F0 /* ARRGLView.mm in Sources */,
+				3257659516E5098D00CFC6F0 /* GLShader.m in Sources */,
+				3257659816E50CDC00CFC6F0 /* ARRSimpleGLShader.m in Sources */,
+				3257659B16E5150900CFC6F0 /* ARRGLVBOSimple.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,9 +10,11 @@
 
 #include "CoreAR.h"
 
+@class ARRGLView;
+
 @interface ARRCameraViewController : CameraViewController {
     unsigned char	*chaincodeBuff;
-//	GLOverlayView	*myGLView;
+	ARRGLView	*glView;
 	CRCodeListRef	codeListRef;
 }
 
