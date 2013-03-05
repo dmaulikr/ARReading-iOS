@@ -35,9 +35,11 @@
 	// Do any additional setup after loading the view.
     
     // alloc init camera
+    _DP("camera will init.")
     _camera = [[ARRCameraViewController alloc] initWithCameraViewControllerType:(CameraViewControllerType)(BufferGrayColor|BufferSize480x360)];
-    
+
     // add camera
+    _DP("camera.view will add.")
 	[self.view addSubview:_camera.view];
 	[_camera.view setFrame:self.view.bounds];
 	[_camera viewWillAppear:YES];

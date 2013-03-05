@@ -25,12 +25,14 @@ static float focalLength = 457.89;
 	// OpenGL overlaid content view
 	CGRect r = self.view.frame;
 	r.size.height = r.size.width / 360.0 * 480.0;
+    _DP("glView will init")
 	glView = [[ARRGLView alloc] initWithFrame:r];
     
 	[glView setCameraFrameSize:CGSizeMake(480, 360)];
     [glView setupOpenGLViewWithFocalX:focalLength focalY:focalLength];
 	[glView startAnimation];  // startAnimation?
     
+    _DP("glView will add.")
 	[self.view addSubview:glView];
 	[glView setCodeListRef:codeListRef];  // 使 GLView 能得到 识别出的 Code的矩阵
 }
@@ -88,7 +90,7 @@ static float focalLength = 457.89;
                 // INPUT: width, height, focalLength, focalLength, codeSize
 				code->normalizeCornerForImageCoord(width, height, focalLength, focalLength);    // focalLength 焦距
 				code->getSimpleHomography(codeSize);    // float codeSize = 1;
-                //                code->dumpMatrix();
+                //code->dumpMatrix();
 				code->optimizeRTMatrinxWithLevenbergMarquardtMethod();  // 优化？？
 				
 				// cropping code image area

@@ -53,6 +53,8 @@
 #pragma mark GLView (private)
 
 - (BOOL)initializeOpenGLES {
+    _DP("initializeOpenGLES")
+    
     // CAEAGLLayer
     CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 	eaglLayer.opaque = NO;
@@ -89,12 +91,16 @@
 
 // 当 GLView 作为 subView 加入到 父View 时
 -(void)layoutSubviews {
-    [super layoutSubviews];
+//    [super layoutSubviews];
     
-//	[EAGLContext setCurrentContext:_context];
+	[EAGLContext setCurrentContext:_context];
     
+    _DP("GLView layoutSubviews.")
+    _DP("GLView will destroyFramebuffer.")
 	[self destroyFramebuffer];
+    _DP("GLView will createFramebuffer.")
 	[self createFramebuffer];
+    _DP("GLView will render.")
 	[self render];
 }
 
@@ -202,12 +208,16 @@
 //}
 
 - (id)initWithFrame:(CGRect)frame {
+    _DP("GLView init.")
 	self = [super initWithFrame:frame];
 	if (self) {
-		if (![self initializeOpenGLES]) {    // init
-            self = nil;
-			return nil;
-		}
+//		if (![self initializeOpenGLES]) {    // init
+//            self = nil;
+//			return nil;
+//		}
+        
+        [self initializeOpenGLES];
+        
 		[self setupGLView];     // setup GLView
 	}
 	return self;

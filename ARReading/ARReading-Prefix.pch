@@ -12,3 +12,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+#ifdef _DEBUG
+#define _DP(...) printf(__VA_ARGS__);printf("\n");
+#else
+#define _DP(...) //printf(__VA_ARGS__);
+#endif

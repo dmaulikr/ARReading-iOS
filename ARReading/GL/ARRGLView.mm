@@ -21,8 +21,10 @@
     if (self) {
         // Initialization code
         
+        _DP("shader will init.")
         _shader = [[ARRSimpleGLShader alloc] init];
         
+        _DP("VBO will setup.")
         [ARRGLVBOSimple setupVertexBufferObjects];
     }
     return self;
@@ -63,7 +65,11 @@
 }
 
 - (void)render {
-//	[EAGLContext setCurrentContext:_context];
+    _DP("glView render.")
+    
+	[EAGLContext setCurrentContext:_context];
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     [_shader bind];
@@ -78,13 +84,8 @@
 	if (_codeListRef) {
 		CRCodeList::iterator it = _codeListRef->begin();
 		while(it != _codeListRef->end()) {
-			float r[4];
-			
 			// only when using OpenGL for rendering
 			(*it)->rotateOptimizedMatrixForOpenGL();
-			
-            // 根据识别出的 code，的变换矩阵，渲染
-			CRMatrixMat4x42Quaternion(r, (*it)->optimizedMatrix);  // 矩阵 -> quaternion: 四元数
             
             glUniformMatrix4fv(_modelViewUniform, 1, GL_FALSE, (*it)->optimizedMatrixGL);
             [ARRGLVBOSimple drawElements];  // draw VBO Elements
@@ -96,6 +97,9 @@
     glDisableVertexAttribArray(_shader.positionSlot);
     glDisableVertexAttribArray(_shader.colorSlot);    
     [_shader unbind];
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
 	[_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 

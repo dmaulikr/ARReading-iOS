@@ -109,10 +109,10 @@ int isConvex(CRHomogeneousVec3 *firstCorner, CRHomogeneousVec3 *secondCorner, CR
 	CRHomogeneousVec3 *side41 = CRHomogeneousVec3::diff(firstCorner, fourthCorner);
 	CRHomogeneousVec3 *outer43_41 = CRHomogeneousVec3::outerProduct(side43, side41);
 	
-	outer14_12->dump();
-	outer21_23->dump();
-	outer32_34->dump();
-	outer43_41->dump();
+//	outer14_12->dump();
+//	outer21_23->dump();
+//	outer32_34->dump();
+//	outer43_41->dump();
 	
 	bool isConvex1 = (outer14_12->w > 0);
 	bool isConvex2 = (outer21_23->w > 0);
