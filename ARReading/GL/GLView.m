@@ -97,10 +97,13 @@
 	[self createFramebuffer];
 }
 
+// 要先 bind depth，再 bind color；不然，后面还要 bind color 貌似。TODO：搞懂。
 - (BOOL)createFramebuffer {
-    // frame buffer
-	glGenFramebuffers(1, &_frameBuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+    // depth buffer
+	glGenRenderbuffers(1, &_depthRenderBuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
+//	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, self.frame.size.width, self.frame.size.height);
     
     // render buffer
 	glGenRenderbuffers(1, &_renderBuffer);
@@ -108,15 +111,14 @@
     [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];   //..?
 //	glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_WIDTH,&_backingWidth);
 //	glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_HEIGHT,&_backingHeight);
-//	
-//    // depth buffer
-//	glGenRenderbuffers(1, &_depthRenderBuffer);
-//	glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
-//	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
 	
+    // frame buffer
+	glGenFramebuffers(1, &_frameBuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+    
     // attach
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderBuffer);
-//	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,GL_RENDERBUFFER, _depthRenderBuffer);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,GL_RENDERBUFFER, _depthRenderBuffer);
 	
 	return YES;
 }
@@ -171,6 +173,40 @@
 		_animating = FALSE;
 	}
 }
+
+// 创建 _targetTextureId
+-(GLuint)createTexture{
+    _targetTextureId = 0;
+	glGenTextures(1,&_targetTextureId);
+	glBindTexture(GL_TEXTURE_2D,_targetTextureId);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D,0);
+	return _targetTextureId;
+}
+
+//-(GLuint)createTextureWithSize:(CGSize)size format:(int)fmt{
+//	int w = (int)size.width;
+//	int h = (int)size.height;
+//    
+//	GLuint format = GL_LUMINANCE;
+//	if( fmt == 2 ){ format = GL_LUMINANCE_ALPHA; }
+//	else if( fmt == 3 ){ format = GL_RGB; }
+//	else if( fmt == 4 ){ format = GL_RGBA; }
+//    
+//	GLuint textureId = 0;
+//	glGenTextures(1,&textureId);
+//	glBindTexture(GL_TEXTURE_2D,textureId);
+//	glTexImage2D(GL_TEXTURE_2D,0,format,w, h, 0, format,GL_UNSIGNED_BYTE,NULL);     // NULL
+//	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
+//	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
+//	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+//	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+//	glBindTexture(GL_TEXTURE_2D,0);
+//	return textureId;
+//}
 
 #pragma mark -
 #pragma mark If you use subclass of this, overide following methods

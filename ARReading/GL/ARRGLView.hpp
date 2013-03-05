@@ -9,7 +9,9 @@
 #import "GLView.h"
 #import "CC3GLMatrix.h"
 #import "ARRCameraViewController.hpp"
+
 #import "ARRSimpleGLShader.h"
+#import "ARRTextureGLShader.h"
 
 //#import "CoreAR.h"  //??
 #include "CoreAR.h"
@@ -22,7 +24,8 @@
     
     CC3GLMatrix *_projection;
     
-    ARRSimpleGLShader *_shader;
+    ARRSimpleGLShader *_simpleShader;
+    ARRTextureGLShader *_textureShader;
     
     //
     

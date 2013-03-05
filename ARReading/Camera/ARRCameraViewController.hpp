@@ -11,11 +11,14 @@
 #include "CoreAR.h"
 
 @class ARRGLView;
+@class GLMovieTexture;
 
 @interface ARRCameraViewController : CameraViewController {
     unsigned char	*chaincodeBuff;
 	ARRGLView	*glView;
 	CRCodeListRef	codeListRef;
+    
+    GLMovieTexture *movieTexture;
 }
 
 @end
