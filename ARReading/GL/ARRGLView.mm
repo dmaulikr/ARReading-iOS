@@ -12,45 +12,22 @@
 
 @implementation ARRGLView
 
-//@synthesize cameraFrameSize;
-//@synthesize codeListRef;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
         
-        _DP("shader will init.")
-        _shader = [[ARRSimpleGLShader alloc] init];
-        
         _DP("VBO will setup.")
         [ARRGLVBOSimple setupVertexBufferObjects];
+        
+        _DP("shader will init.")
+        _shader = [[ARRSimpleGLShader alloc] init];
     }
     return self;
 }
 
 -(void)setupOpenGLViewWithFocalX:(float)focalX focalY:(float)focalY {
-//	const GLfloat			lightAmbient[] = {0.2, 0.2, 0.2, 1.0};
-//	const GLfloat			lightDiffuse[] = {1.0, 0.6, 0.0, 1.0};
-//	const GLfloat			matAmbient[] = {0.6, 0.6, 0.6, 1.0};
-//	const GLfloat			matDiffuse[] = {1.0, 1.0, 1.0, 1.0};
-//	const GLfloat			matSpecular[] = {1.0, 1.0, 1.0, 1.0};
-//	const GLfloat			lightPosition[] = {0.0, 1.0, 1.0, 0.0};
-//	const GLfloat			lightShininess = 100.0;
-//	
-//	//Configure OpenGL lighting
-//	glEnable(GL_LIGHTING);
-//	glEnable(GL_LIGHT0);
-//	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, matAmbient);
-//	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, matDiffuse);
-//	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpecular);
-//	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, lightShininess);
-//	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
-//	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
-//	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-//	glShadeModel(GL_SMOOTH);
-//	glEnable(GL_DEPTH_TEST);
 
 	// Set Projection
     _projection = [CC3GLMatrix matrix];
@@ -64,13 +41,29 @@
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
 }
 
+- (void)renderTest {
+    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    [_context presentRenderbuffer:GL_RENDERBUFFER];
+    
+//    // model-view matrix
+//    CC3Vector v;
+//	v.x = 0;
+//	v.y = 0;
+//	v.z = -7;
+//    CC3GLMatrix *modelView = [CC3GLMatrix matrix];
+//    [modelView populateFromTranslation:v];    // 平移 (x,y,z)
+//    glUniformMatrix4fv(_shader.modelViewUniform, 1, 0, modelView.glMatrix);
+//    
+//    [ARRGLVBOSimple drawElements];  // draw VBO Elements
+}
+
 - (void)render {
     _DP("glView render.")
     
-	[EAGLContext setCurrentContext:_context];
-    
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+//    glEnable(GL_DEPTH_TEST);    // 开启深度测试
     
     [_shader bind];
     glEnableVertexAttribArray(_shader.positionSlot);
@@ -78,16 +71,16 @@
     
     glVertexAttribPointer(_shader.positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
     glVertexAttribPointer(_shader.colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) *3));
-	
-	glUniformMatrix4fv(_projectionUniform, 1, GL_FALSE, _projection.glMatrix);
-    
+
+	glUniformMatrix4fv(_shader.projectionUniform, 1, GL_FALSE, _projection.glMatrix);
+
 	if (_codeListRef) {
 		CRCodeList::iterator it = _codeListRef->begin();
 		while(it != _codeListRef->end()) {
 			// only when using OpenGL for rendering
 			(*it)->rotateOptimizedMatrixForOpenGL();
             
-            glUniformMatrix4fv(_modelViewUniform, 1, GL_FALSE, (*it)->optimizedMatrixGL);
+            glUniformMatrix4fv(_shader.modelViewUniform, 1, 0, (*it)->optimizedMatrixGL);
             [ARRGLVBOSimple drawElements];  // draw VBO Elements
             
 			++it;
@@ -98,8 +91,6 @@
     glDisableVertexAttribArray(_shader.colorSlot);    
     [_shader unbind];
     
-    glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
-	glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
 	[_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 

@@ -20,6 +20,7 @@
     }
     
     // 获得变量指针
+    _positionSlot = glGetAttribLocation(_programId,"Position");
     _colorSlot = glGetAttribLocation(_programId, "SourceColor");
     
     // 维护 Uniform 指针

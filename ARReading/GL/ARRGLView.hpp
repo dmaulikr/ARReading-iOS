@@ -17,8 +17,8 @@
 @interface ARRGLView : GLView {
     
     // uniform matrix
-    GLuint _projectionUniform;
-    GLuint _modelViewUniform;
+//    GLuint _projectionUniform;
+//    GLuint _modelViewUniform;
     
     CC3GLMatrix *_projection;
     
@@ -32,5 +32,7 @@
 @property (nonatomic, assign) CGSize cameraFrameSize;
 @property (nonatomic, assign) CRCodeListRef codeListRef;        // assign?
 -(void)setupOpenGLViewWithFocalX:(float)focalX focalY:(float)focalY;
+
+- (void)renderTest;
 
 @end

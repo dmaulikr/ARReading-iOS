@@ -380,10 +380,10 @@ void CRCode::rotateOptimizedMatrixForOpenGL() {
 	optimizedMatrix[2][0] = - tempMatrix[2][0];	optimizedMatrix[2][1] = - tempMatrix[2][1];	optimizedMatrix[2][2] = - tempMatrix[2][2];	optimizedMatrix[2][3] = - tempMatrix[2][3];
 	optimizedMatrix[3][0] =   tempMatrix[3][0];	optimizedMatrix[3][1] =   tempMatrix[3][1];	optimizedMatrix[3][2] =   tempMatrix[3][2];	optimizedMatrix[3][3] =   tempMatrix[3][3];
 	
-	optimizedMatrixGL[ 0] = optimizedMatrix[0][0];	optimizedMatrixGL[ 4] = optimizedMatrix[0][1];	optimizedMatrixGL[ 8] = optimizedMatrix[0][2];	matrixGL[12] = optimizedMatrix[0][3];
-	optimizedMatrixGL[ 1] = optimizedMatrix[1][0];	optimizedMatrixGL[ 5] = optimizedMatrix[1][1];	optimizedMatrixGL[ 9] = optimizedMatrix[1][2];	matrixGL[13] = optimizedMatrix[1][3];
-	optimizedMatrixGL[ 2] = optimizedMatrix[2][0];	optimizedMatrixGL[ 6] = optimizedMatrix[2][1];	optimizedMatrixGL[10] = optimizedMatrix[2][2];	matrixGL[14] = optimizedMatrix[2][3];
-	optimizedMatrixGL[ 3] = optimizedMatrix[3][0];	optimizedMatrixGL[ 7] = optimizedMatrix[3][1];	optimizedMatrixGL[11] = optimizedMatrix[3][2];	matrixGL[15] = optimizedMatrix[3][3];
+	optimizedMatrixGL[ 0] = optimizedMatrix[0][0];	optimizedMatrixGL[ 4] = optimizedMatrix[0][1];	optimizedMatrixGL[ 8] = optimizedMatrix[0][2];	optimizedMatrixGL[12] = optimizedMatrix[0][3];
+	optimizedMatrixGL[ 1] = optimizedMatrix[1][0];	optimizedMatrixGL[ 5] = optimizedMatrix[1][1];	optimizedMatrixGL[ 9] = optimizedMatrix[1][2];	optimizedMatrixGL[13] = optimizedMatrix[1][3];
+	optimizedMatrixGL[ 2] = optimizedMatrix[2][0];	optimizedMatrixGL[ 6] = optimizedMatrix[2][1];	optimizedMatrixGL[10] = optimizedMatrix[2][2];	optimizedMatrixGL[14] = optimizedMatrix[2][3];
+	optimizedMatrixGL[ 3] = optimizedMatrix[3][0];	optimizedMatrixGL[ 7] = optimizedMatrix[3][1];	optimizedMatrixGL[11] = optimizedMatrix[3][2];	optimizedMatrixGL[15] = optimizedMatrix[3][3];
 }
 
 

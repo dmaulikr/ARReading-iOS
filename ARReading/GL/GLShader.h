@@ -10,10 +10,8 @@
 #import <OpenGLES/ES2/gl.h>
 
 @interface GLShader : NSObject {
-    uint32_t _programId;
+    GLuint _programId;
 }
-
-@property (readonly) GLuint positionSlot;
 
 -(void)bind;
 -(void)unbind;

@@ -11,6 +11,7 @@
 @interface ARRSimpleGLShader : GLShader
 
 // attr slot
+@property (readonly) GLuint positionSlot;
 @property (readonly) GLuint colorSlot;
 
 // uniform matrix

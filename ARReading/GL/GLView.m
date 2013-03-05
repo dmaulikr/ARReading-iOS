@@ -8,7 +8,6 @@
 
 #import "GLView.h"
 
-#import <QuartzCore/QuartzCore.h>
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
@@ -56,10 +55,8 @@
     _DP("initializeOpenGLES")
     
     // CAEAGLLayer
-    CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
-	eaglLayer.opaque = NO;
-	eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-									kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
+    _eaglLayer = (CAEAGLLayer *)self.layer;
+	_eaglLayer.opaque = NO;
 
     // EAGLContext
     EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES2;
@@ -91,17 +88,13 @@
 
 // 当 GLView 作为 subView 加入到 父View 时
 -(void)layoutSubviews {
-//    [super layoutSubviews];
-    
-	[EAGLContext setCurrentContext:_context];
-    
     _DP("GLView layoutSubviews.")
+    [super layoutSubviews];
+    
     _DP("GLView will destroyFramebuffer.")
 	[self destroyFramebuffer];
     _DP("GLView will createFramebuffer.")
 	[self createFramebuffer];
-    _DP("GLView will render.")
-	[self render];
 }
 
 - (BOOL)createFramebuffer {
@@ -112,35 +105,32 @@
     // render buffer
 	glGenRenderbuffers(1, &_renderBuffer);
 	glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
-	[_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
-	glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_WIDTH,&_backingWidth);
-	glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_HEIGHT,&_backingHeight);
-	
-    // depth buffer
-	glGenRenderbuffers(1, &_depthRenderBuffer);
-	glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
+    [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];   //..?
+//	glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_WIDTH,&_backingWidth);
+//	glGetRenderbufferParameteriv(GL_RENDERBUFFER,GL_RENDERBUFFER_HEIGHT,&_backingHeight);
+//	
+//    // depth buffer
+//	glGenRenderbuffers(1, &_depthRenderBuffer);
+//	glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
+//	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
 	
     // attach
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderBuffer);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,GL_RENDERBUFFER, _depthRenderBuffer);
-    
-    
-	if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-		NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
-		return NO;
-	}
+//	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,GL_RENDERBUFFER, _depthRenderBuffer);
 	
 	return YES;
 }
 
 // Clean up any buffers we have allocated.
 - (void)destroyFramebuffer {
-	glDeleteFramebuffers(1, &_frameBuffer);
-	_frameBuffer = 0;
-	glDeleteRenderbuffers(1, &_renderBuffer);
-	_renderBuffer = 0;
-	
+    if( _frameBuffer ){
+		glDeleteFramebuffers(1,&_frameBuffer);
+		_frameBuffer = 0;
+	}
+	if( _renderBuffer ){
+		glDeleteRenderbuffers(1,&_renderBuffer);
+		_renderBuffer = 0;
+	}
 	if(_depthRenderBuffer) {
 		glDeleteRenderbuffers(1, &_depthRenderBuffer);
 		_depthRenderBuffer = 0;
@@ -185,10 +175,6 @@
 #pragma mark -
 #pragma mark If you use subclass of this, overide following methods
 
--(void)setupGLView {
-	// dummy
-}
-
 - (void)render {
 	// dummy
 }
@@ -211,14 +197,10 @@
     _DP("GLView init.")
 	self = [super initWithFrame:frame];
 	if (self) {
-//		if (![self initializeOpenGLES]) {    // init
-//            self = nil;
-//			return nil;
-//		}
-        
-        [self initializeOpenGLES];
-        
-		[self setupGLView];     // setup GLView
+		if (![self initializeOpenGLES]) {    // init
+            self = nil;
+			return nil;
+		}
 	}
 	return self;
 }

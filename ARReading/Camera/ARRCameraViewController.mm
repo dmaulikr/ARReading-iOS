@@ -17,8 +17,9 @@ static float focalLength = 457.89;
 
 // Param init
 - (void)viewWillAppear:(BOOL)animated {
+    _DP("camera viewWillAppear")
 	[super viewWillAppear:animated];
-    	
+    
 	if (codeListRef == NULL)
 		codeListRef = new CRCodeList();
 	

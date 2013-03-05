@@ -67,8 +67,6 @@
 		return FALSE;
 	}
 	
-	_positionSlot = glGetAttribLocation(_programId,"Position");
-	
 	return TRUE;
 }
 

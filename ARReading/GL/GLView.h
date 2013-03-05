@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h> 
 
 @interface GLView : UIView {
     // The pixel dimensions of the backbuffer. From OpenGL
     GLint _backingWidth;
     GLint _backingHeight;
     
+    CAEAGLLayer *_eaglLayer;
     EAGLContext *_context;
     
     GLuint _renderBuffer;
@@ -36,7 +38,6 @@
 -(void)stopAnimation;
 
 // for override
-//-(void)setupGLView;
 -(void)render;
 
 @end
