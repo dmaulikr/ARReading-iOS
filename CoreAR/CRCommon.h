@@ -56,34 +56,34 @@
 #define SAFE_DELETE(p)			if(p){delete(p);p=NULL;}
 #define SAFE_DELETE_ARRAY(p)	if(p){delete [] p;p=NULL;}
 
-// static tic and toc methods
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/time.h>
-
-static struct timeval _start, _end;
-
-static void _CRTic(void);
-static void _CRToc(void);
-static double _CRTocWithoutLog(void);
-
-static void _CRTic() {
-	gettimeofday(&_start, NULL);
-}
-
-static void _CRToc() {
-	gettimeofday(&_end, NULL);
-	long int e_sec = _end.tv_sec * 1000000 + _end.tv_usec;
-	long int s_sec = _start.tv_sec * 1000000 + _start.tv_usec;
-	printf( "%9.4lf[ms]\n", (double)(e_sec - s_sec) / 1000.0);
-}
-
-static double _CRTocWithoutLog() {
-	gettimeofday(&_end, NULL);
-	long int e_sec = _end.tv_sec * 1000000 + _end.tv_usec;
-	long int s_sec = _start.tv_sec * 1000000 + _start.tv_usec;
-	return (double)(e_sec - s_sec) / 1000.0;
-}
+//// static tic and toc methods
+//
+//#include <stdlib.h>
+//#include <stdio.h>
+//#include <sys/time.h>
+//
+//static struct timeval _start, _end;
+//
+//static void _CRTic(void);
+//static void _CRToc(void);
+//static double _CRTocWithoutLog(void);
+//
+//static void _CRTic() {
+//	gettimeofday(&_start, NULL);
+//}
+//
+//static void _CRToc() {
+//	gettimeofday(&_end, NULL);
+//	long int e_sec = _end.tv_sec * 1000000 + _end.tv_usec;
+//	long int s_sec = _start.tv_sec * 1000000 + _start.tv_usec;
+//	printf( "%9.4lf[ms]\n", (double)(e_sec - s_sec) / 1000.0);
+//}
+//
+//static double _CRTocWithoutLog() {
+//	gettimeofday(&_end, NULL);
+//	long int e_sec = _end.tv_sec * 1000000 + _end.tv_usec;
+//	long int s_sec = _start.tv_sec * 1000000 + _start.tv_usec;
+//	return (double)(e_sec - s_sec) / 1000.0;
+//}
 
 #endif

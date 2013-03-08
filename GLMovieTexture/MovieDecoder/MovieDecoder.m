@@ -40,7 +40,7 @@ synthesize_getter(id<MovieDecoderDelegate>,delegate)    // _data->_delegate
 -(void)dealloc{
 	[_data->_lock lock];
 	NSRecursiveLock *lock = _data->_lock;
-	[_data->_timer invalidate];
+//	[_data->_timer invalidate];
 	[_data->_stopWatch release];
 	free(_data);
 	[lock unlock];
@@ -84,10 +84,30 @@ synthesize_getter(id<MovieDecoderDelegate>,delegate)    // _data->_delegate
 	[self preprocessForDecoding];
     
     // 定时循环
-	_data->_timer = [NSTimer scheduledTimerWithTimeInterval:(1.0/_data->_frameRate)
-											  target:self
-											selector:@selector(captureLoop)
-											userInfo:nil repeats:YES];
+//	_data->_timer = [NSTimer scheduledTimerWithTimeInterval:(1.0/_data->_frameRate)
+//											  target:self
+//											selector:@selector(captureLoop)
+//											userInfo:nil repeats:YES];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    // create our timer source
+    _data->_timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    // set the time to fire (we're only going to fire once,
+    // so just fill in the initial time).
+    dispatch_source_set_timer(_data->_timer,
+                              dispatch_walltime(NULL, 0),
+                              1.0/_data->_frameRate * NSEC_PER_SEC, 0);
+    
+    // Hey, let's actually do something when the timer fires!
+    dispatch_source_set_event_handler(_data->_timer, ^{
+        [self captureLoop];
+        //        dispatch_source_cancel(_timer);
+    });
+    
+    // now that our timer is all set to go, start it
+    dispatch_resume(_data->_timer);
+    
 	[_data->_lock unlock];
 }
 
@@ -97,7 +117,7 @@ synthesize_getter(id<MovieDecoderDelegate>,delegate)    // _data->_delegate
 		[_data->_lock unlock];
 		return;
 	}
-	[_data->_timer invalidate];
+//	[_data->_timer invalidate];
 	_data->_timer = nil;
 	[self processForPausing];
 	[_data->_lock unlock];
@@ -106,16 +126,19 @@ synthesize_getter(id<MovieDecoderDelegate>,delegate)    // _data->_delegate
 -(void)stop{
 	[_data->_lock lock];
 	_data->_currentTime  = 0;
-	[_data->_timer invalidate];
+//	[_data->_timer invalidate];
 	_data->_timer = nil;
 	[self postprocessForDecoding];
 	[_data->_lock unlock];
 }
 
 -(void)captureLoop{
-	//[_data->_stopWatch start];
+//    [_data->_stopWatch start];
+    _DP("movie texture:");
+    _CRTic();
 	[self captureNext];
-	//[_data->_stopWatch stop];
+    _CRToc();
+//    [_data->_stopWatch stop];
 }
 
 -(void)captureNext{
@@ -129,6 +152,7 @@ synthesize_getter(id<MovieDecoderDelegate>,delegate)    // _data->_delegate
 }
 
 -(BOOL)isRunning{
+    // TODO
 	return [_data->_timer isValid]? YES : NO;
 }
 

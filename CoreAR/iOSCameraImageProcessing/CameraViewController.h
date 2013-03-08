@@ -40,12 +40,14 @@ void _tic(void);				// not thread safe
 double _toc(void);
 double _tocp(void);				// with printf
 
+// 低 4 位
 typedef enum _CameraViewControllerType{
 	BufferTypeMask				= 0x0f,
 	BufferGrayColor				= 0,
 	BufferRGBColor				= 1,
 }CameraViewControllerType;
 
+// 中间 4 位（5~8）
 typedef enum _CameraViewControllerSize{
 	BufferSizeMask				= 0xf0,
 	BufferSize1280x720			= 0 << 4,
@@ -54,6 +56,7 @@ typedef enum _CameraViewControllerSize{
 	BufferSize192x144			= 3 << 4,
 }CameraViewControllerSize;
 
+// 高 1 位（9）
 typedef enum _CameraViewControllerMultiThreading{
 	MultiThreadingMask			= 0x100,
 	NotSupportMultiThreading	= 0 << 8,

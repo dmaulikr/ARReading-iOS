@@ -104,7 +104,7 @@
 	if( _assetReader.status != AVAssetReaderStatusReading ){
 		if( _assetReader.status == AVAssetReaderStatusCompleted ){
 			if( !_data->_loop ){
-				[_data->_timer invalidate];
+//				[_data->_timer invalidate];
 				_data->_timer = nil;
 				_data->_resetFlag = YES;
 				[_data->_delegate movieDecoderDidFinishDecoding:self];

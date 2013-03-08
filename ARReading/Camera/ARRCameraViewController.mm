@@ -18,7 +18,6 @@ static float focalLength = 457.89;
 
 // Param init
 - (void)viewWillAppear:(BOOL)animated {
-    _DP("camera viewWillAppear")
 	[super viewWillAppear:animated];
     
 	if (codeListRef == NULL)
@@ -27,14 +26,12 @@ static float focalLength = 457.89;
 	// OpenGL overlaid content view
 	CGRect r = self.view.frame;
 	r.size.height = r.size.width / 360.0 * 480.0;
-    _DP("glView will init")
 	glView = [[ARRGLView alloc] initWithFrame:r];
     
 	[glView setCameraFrameSize:CGSizeMake(480, 360)];
     [glView setupOpenGLViewWithFocalX:focalLength focalY:focalLength];
-	[glView startAnimation];  // startAnimation?
+//	[glView startAnimation];  // startAnimation?    // 都不render看看
     
-    _DP("glView will add.")
 	[self.view addSubview:glView];
 	[glView setCodeListRef:codeListRef];  // 使 GLView 能得到 识别出的 Code的矩阵
     
@@ -51,7 +48,8 @@ static float focalLength = 457.89;
 
 // Main Loop
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-	_CRTic();
+//    _DP("caputrue loop:")
+//	_CRTic();
 	
 	[super captureOutput:captureOutput didOutputSampleBuffer:sampleBuffer fromConnection:connection];
 	
@@ -73,7 +71,7 @@ static float focalLength = 457.89;
 	
 	float codeSize = 1;
 	
-	int croppingSize = 64;
+//	int croppingSize = 64;
 	
 	CRChainCode *chaincode = new CRChainCode();
 	
@@ -105,9 +103,12 @@ static float focalLength = 457.89;
                 //code->dumpMatrix();
 				code->optimizeRTMatrinxWithLevenbergMarquardtMethod();  // 优化？？
 				
-				// cropping code image area
-				code->crop(croppingSize, croppingSize, focalLength, focalLength, codeSize, buffer, width, height);
+//				// cropping code image area
+//				code->crop(croppingSize, croppingSize, focalLength, focalLength, codeSize, buffer, width, height);
 				
+                // only when using OpenGL for rendering
+                code->rotateOptimizedMatrixForOpenGL();
+                
 				codeListRef->push_back(code);
                 
 			}
@@ -116,6 +117,9 @@ static float focalLength = 457.89;
 		}
 	}
 	
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [glView render];        // 这里 画 GL
+    });
 //	[glView render];        // 这里 画 GL
 	
 	SAFE_DELETE(chaincode);

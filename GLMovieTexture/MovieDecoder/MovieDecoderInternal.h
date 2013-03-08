@@ -17,7 +17,8 @@ typedef struct MovieDecoderData{
 	BOOL      _initFlag;
 	BOOL      _resetFlag;
 	BOOL      _finishFlag;
-	NSTimer  *_timer;
+//	NSTimer  *_timer;
+    dispatch_source_t _timer;
 	NSRecursiveLock *_lock;
 	QCStopWatch *_stopWatch;
 	////////////////////////

@@ -43,6 +43,9 @@
 -(GLuint)createTexture;
 //-(GLuint)createTextureWithSize:(CGSize)size format:(int)fmt;
 
+-(void)beginRendering;
+-(void)endRendering;
+
 // for override
 -(void)render;
 

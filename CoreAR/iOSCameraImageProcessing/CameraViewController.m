@@ -140,16 +140,16 @@ double _tocp() {
 	
 	AVCaptureVideoDataOutput * videoDataOutput = [[[AVCaptureVideoDataOutput alloc] init] autorelease];
 	[videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
-	[videoDataOutput setVideoSettings:settingInfo];
+	[videoDataOutput setVideoSettings:settingInfo]; 
 
 	// support multi-threading
 	if ((type & MultiThreadingMask) == SupportMultiThreading) {
 		dispatch_queue_t queue = dispatch_queue_create("captureQueue", NULL);
-		[videoDataOutput setSampleBufferDelegate:self queue:queue];
+		[videoDataOutput setSampleBufferDelegate:self queue:queue]; // You must use a serial dispatch queue, to guarantee that video frames will be delivered in order
 		dispatch_release(queue);
 	}
 	else {
-		[videoDataOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
+		[videoDataOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()]; // main thread
 	}
 	
 	// attach video to session
@@ -165,7 +165,7 @@ double _tocp() {
 	else {
 		aspectRatio = 4.0 / 3.0;
 	}
-		
+    
 	// setting preview layer
 	previewView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 1024)];      // 1024*1024 ??
 	[previewView setAutoresizingMask:UIViewAutoresizingNone];   // default
@@ -244,8 +244,14 @@ double _tocp() {
 	previewLayer.frame = CGRectMake(0, 0, width, height);
 	[previewView.layer addSublayer:previewLayer];
 	[self.view addSubview:previewView];
-	[session startRunning];
-	
+	[session startRunning];     // start
+    /*
+    // Start the session. This is done asychronously since -startRunning doesn't return until the session is running.
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		[session startRunning];
+	});
+     */
+     
 	[self adjustCameraPreviewLayerOrientaion:self.interfaceOrientation];
 	
 	canRotate = NO;

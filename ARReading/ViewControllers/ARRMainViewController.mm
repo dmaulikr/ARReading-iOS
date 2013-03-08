@@ -35,11 +35,9 @@
 	// Do any additional setup after loading the view.
     
     // alloc init camera
-    _DP("camera will init.")
-    _camera = [[ARRCameraViewController alloc] initWithCameraViewControllerType:(CameraViewControllerType)(BufferGrayColor|BufferSize480x360)];
+    _camera = [[ARRCameraViewController alloc] initWithCameraViewControllerType:(CameraViewControllerType)(BufferGrayColor|BufferSize480x360|SupportMultiThreading)];
 
     // add camera
-    _DP("camera.view will add.")
     [_camera.view setFrame:self.view.bounds];
 	[self.view addSubview:_camera.view];    // on iOS 5, addSubview also will call viewWillAppear!!
 }

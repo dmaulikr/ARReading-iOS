@@ -52,7 +52,6 @@
 #pragma mark GLView (private)
 
 - (BOOL)initializeOpenGLES {
-    _DP("initializeOpenGLES")
     
     // CAEAGLLayer
     _eaglLayer = (CAEAGLLayer *)self.layer;
@@ -88,12 +87,9 @@
 
 // 当 GLView 作为 subView 加入到 父View 时
 -(void)layoutSubviews {
-    _DP("GLView layoutSubviews.")
     [super layoutSubviews];
     
-    _DP("GLView will destroyFramebuffer.")
 	[self destroyFramebuffer];
-    _DP("GLView will createFramebuffer.")
 	[self createFramebuffer];
 }
 
@@ -208,6 +204,22 @@
 //	return textureId;
 //}
 
+-(void)beginRendering
+{
+	[EAGLContext setCurrentContext:_context];
+	glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
+//	glClearDepthf(1.f);
+//	glClearColor(1.f, 1.f, 1.f, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+}
+
+-(void)endRendering
+{
+	glFlush();
+	glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
+	[_context presentRenderbuffer:GL_RENDERBUFFER];
+}
+
 #pragma mark -
 #pragma mark If you use subclass of this, overide following methods
 
@@ -230,7 +242,6 @@
 //}
 
 - (id)initWithFrame:(CGRect)frame {
-    _DP("GLView init.")
 	self = [super initWithFrame:frame];
 	if (self) {
 		if (![self initializeOpenGLES]) {    // init
