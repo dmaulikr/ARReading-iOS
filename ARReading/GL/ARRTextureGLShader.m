@@ -38,7 +38,7 @@ static int textureUnitIndex = 0;
 
 -(void)setTexture:(uint32_t)textureId atIndex:(int)index {
 	if( index < 0 || index >= 16 ){ return; }
-	glUniform1i(_textures[index], textureUnitIndex);
+	glUniform1i(_textures[index], textureUnitIndex);    // 顺序？
 	glActiveTexture(GL_TEXTURE0+textureUnitIndex);
 	glBindTexture(GL_TEXTURE_2D, textureId);
 	textureUnitIndex++;

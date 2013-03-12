@@ -170,6 +170,44 @@
 	}
 }
 
+- (GLuint)createTextureWithImageFile:(NSString *)fileName {
+    // 1
+    CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
+    if (!spriteImage) {
+        NSLog(@"Failed to load image %@", fileName);
+        exit(1);
+    }
+    
+    // 2 建立绘图上下文
+    size_t width = CGImageGetWidth(spriteImage);
+    size_t height = CGImageGetHeight(spriteImage);
+    
+    GLubyte * spriteData = (GLubyte *) calloc(width*height*4, sizeof(GLubyte));
+    
+    // CGContextRef CGBitmapContextCreate(void *data, size_t width, size_t height, size_t bitsPerComponent, size_t bytesPerRow, CGColorSpaceRef space, CGBitmapInfo bitmapInfo)
+    CGContextRef spriteContext = CGBitmapContextCreate(spriteData, width, height, 8, width*4,
+                                                       CGImageGetColorSpace(spriteImage), kCGImageAlphaPremultipliedLast);  // Premultiplied : 预乘 ?
+    
+    // 3 draw 到 context
+    CGContextDrawImage(spriteContext, CGRectMake(0, 0, width, height), spriteImage);
+    
+    CGContextRelease(spriteContext);
+    
+    // 4
+    GLuint texName;
+    glGenTextures(1, &texName); // 创建一个纹理对象
+    glBindTexture(GL_TEXTURE_2D, texName);  // 把我们新建的纹理名字加载到当前的纹理单元中
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);  // 设置函数参数为GL_TEXTURE_MIN_FILTER（这个参数的意思是，当我们绘制远距离的对象的时候，我们会把纹理缩小）和GL_NEAREST（这个参数的作用是，当绘制顶点的时候，选择最邻近的纹理像素）
+    
+    // 像素buffer -> OpenGL
+    // void glTexImage2D (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* pixels)
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, spriteData);
+    
+    free(spriteData);
+    return texName;
+}
+
 // 创建 _targetTextureId
 -(GLuint)createTexture{
     _targetTextureId = 0;
@@ -210,6 +248,9 @@
 	glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
 //	glClearDepthf(1.f);
 //	glClearColor(1.f, 1.f, 1.f, 1.f);
+
+//    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);  // Test
+    
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 }
 

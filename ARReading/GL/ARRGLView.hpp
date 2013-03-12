@@ -13,6 +13,9 @@
 #import "ARRSimpleGLShader.h"
 #import "ARRTextureGLShader.h"
 
+// TEST
+#import "GLShaderTest.h"
+
 //#import "CoreAR.h"  //??
 #include "CoreAR.h"
 
@@ -26,6 +29,8 @@
     
     ARRSimpleGLShader *_simpleShader;
     ARRTextureGLShader *_textureShader;
+    
+    GLTexShader *shader;
     
     //
     

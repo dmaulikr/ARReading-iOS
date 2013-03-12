@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320E2CB216EF162E00A46A6B /* GLShaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 320E2CB116EF162E00A46A6B /* GLShaderTest.m */; };
 		3257639C16E47F9500CFC6F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3257639B16E47F9500CFC6F0 /* UIKit.framework */; };
 		3257639E16E47F9500CFC6F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3257639D16E47F9500CFC6F0 /* Foundation.framework */; };
 		325763A016E47F9500CFC6F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3257639F16E47F9500CFC6F0 /* CoreGraphics.framework */; };
@@ -46,6 +47,8 @@
 		3257659516E5098D00CFC6F0 /* GLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257659416E5098D00CFC6F0 /* GLShader.m */; };
 		3257659816E50CDC00CFC6F0 /* ARRSimpleGLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257659716E50CDB00CFC6F0 /* ARRSimpleGLShader.m */; };
 		3257659B16E5150900CFC6F0 /* ARRGLVBOSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = 3257659A16E5150900CFC6F0 /* ARRGLVBOSimple.m */; };
+		32831CA416EDC83F00EE1B26 /* ARRMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 32831CA316EDC83F00EE1B26 /* ARRMovie.m */; };
+		32831CAA16EDDDDB00EE1B26 /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 32831CA916EDDDDB00EE1B26 /* tile_floor.png */; };
 		329605F916E63C5700344288 /* Movie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 329605F716E63C5700344288 /* Movie.m4v */; };
 		329605FA16E63C5700344288 /* sintel.ipad.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 329605F816E63C5700344288 /* sintel.ipad.mp4 */; };
 		3296060E16E652D800344288 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 3296060D16E652D800344288 /* TODO */; };
@@ -61,6 +64,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320E2CB016EF162E00A46A6B /* GLShaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShaderTest.h; sourceTree = "<group>"; };
+		320E2CB116EF162E00A46A6B /* GLShaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShaderTest.m; sourceTree = "<group>"; };
 		3257639716E47F9500CFC6F0 /* ARReading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARReading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3257639B16E47F9500CFC6F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3257639D16E47F9500CFC6F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +135,9 @@
 		3257659716E50CDB00CFC6F0 /* ARRSimpleGLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRSimpleGLShader.m; sourceTree = "<group>"; };
 		3257659916E5150900CFC6F0 /* ARRGLVBOSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRGLVBOSimple.h; sourceTree = "<group>"; };
 		3257659A16E5150900CFC6F0 /* ARRGLVBOSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRGLVBOSimple.m; sourceTree = "<group>"; };
+		32831CA216EDC83F00EE1B26 /* ARRMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRMovie.h; sourceTree = "<group>"; };
+		32831CA316EDC83F00EE1B26 /* ARRMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRMovie.m; sourceTree = "<group>"; };
+		32831CA916EDDDDB00EE1B26 /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
 		329605F716E63C5700344288 /* Movie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Movie.m4v; sourceTree = "<group>"; };
 		329605F816E63C5700344288 /* sintel.ipad.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sintel.ipad.mp4; sourceTree = "<group>"; };
 		3296060D16E652D800344288 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -212,6 +220,7 @@
 		325763A116E47F9500CFC6F0 /* ARReading */ = {
 			isa = PBXGroup;
 			children = (
+				32831CA016EDC81100EE1B26 /* Movie */,
 				329605F616E63C5700344288 /* Data */,
 				3257656C16E4922200CFC6F0 /* GL */,
 				3257656B16E4921B00CFC6F0 /* Camera */,
@@ -336,13 +345,25 @@
 				3257659A16E5150900CFC6F0 /* ARRGLVBOSimple.m */,
 				32F2F22916E62D3000239A7D /* ARRTextureGLShader.h */,
 				32F2F22A16E62D3000239A7D /* ARRTextureGLShader.m */,
+				320E2CB016EF162E00A46A6B /* GLShaderTest.h */,
+				320E2CB116EF162E00A46A6B /* GLShaderTest.m */,
 			);
 			path = GL;
+			sourceTree = "<group>";
+		};
+		32831CA016EDC81100EE1B26 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				32831CA216EDC83F00EE1B26 /* ARRMovie.h */,
+				32831CA316EDC83F00EE1B26 /* ARRMovie.m */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 		329605F616E63C5700344288 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				32831CA916EDDDDB00EE1B26 /* tile_floor.png */,
 				329605F716E63C5700344288 /* Movie.m4v */,
 				329605F816E63C5700344288 /* sintel.ipad.mp4 */,
 			);
@@ -442,6 +463,7 @@
 				329605F916E63C5700344288 /* Movie.m4v in Resources */,
 				329605FA16E63C5700344288 /* sintel.ipad.mp4 in Resources */,
 				3296060E16E652D800344288 /* TODO in Resources */,
+				32831CAA16EDDDDB00EE1B26 /* tile_floor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +523,8 @@
 				32AE68A016E6026B005BDDC9 /* MovieDecoder.m in Sources */,
 				32AE68A116E6026B005BDDC9 /* QCStopWatch.m in Sources */,
 				32F2F22B16E62D3000239A7D /* ARRTextureGLShader.m in Sources */,
+				32831CA416EDC83F00EE1B26 /* ARRMovie.m in Sources */,
+				320E2CB216EF162E00A46A6B /* GLShaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

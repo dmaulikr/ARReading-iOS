@@ -18,7 +18,7 @@
 	ARRGLView	*glView;
 	CRCodeListRef	codeListRef;
     
-    GLMovieTexture *movieTexture;
+    GLMovieTexture *movie;
 }
 
 @end

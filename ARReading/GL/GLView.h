@@ -42,6 +42,7 @@
 
 -(GLuint)createTexture;
 //-(GLuint)createTextureWithSize:(CGSize)size format:(int)fmt;
+-(GLuint) createTextureWithImageFile:(NSString *)fileName;
 
 -(void)beginRendering;
 -(void)endRendering;

@@ -8,7 +8,15 @@
 
 #import "ARRMainViewController.hpp"
 
-//#import "ARRGLView.hpp"
+#import "ARRGLView.hpp"
+#import "ARRMovie.h"
+#import "GLMovieTexture.h"
+
+@interface ARRMainViewController() {
+    GLMovieTexture *movie;
+}
+
+@end
 
 @implementation ARRMainViewController
 
@@ -40,6 +48,38 @@
     // add camera
     [_camera.view setFrame:self.view.bounds];
 	[self.view addSubview:_camera.view];    // on iOS 5, addSubview also will call viewWillAppear!!
+    
+    
+    /*
+    //////////// Test Without Camera
+    
+    CGRect r = self.view.frame;
+	r.size.height = r.size.width / 360.0 * 480.0;
+	ARRGLView *glView = [[ARRGLView alloc] initWithFrame:r];
+    
+	[glView setCameraFrameSize:CGSizeMake(480, 360)];
+    [glView setupOpenGLViewWithFocalX:457.89 focalY:457.89];
+    [self.view addSubview:glView];
+    [glView createTexture];
+    
+    // Image Texture
+//    glView.targetTextureId = [glView createTextureWithImageFile:@"tile_floor.png"];
+    
+    // Movie Texture
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"sintel.ipad" ofType:@"mp4"];
+//    ARRMovie *movie = [[ARRMovie alloc] initWithPath:path frameRate:24];
+//    glView.targetTextureId = movie.targetTextureId;
+//    [movie start];
+    
+    movie = [[GLMovieTexture alloc] initWithMovie:path context:glView.context];
+	[movie setTextureId:glView.targetTextureId];    // movieTexture -> targetTextureId
+	[movie setLoop:YES];
+	[movie play];
+    
+    [glView startAnimation];  // startAnimation?
+//	[self.view addSubview:glView];
+    */
+    
 }
 
 @end

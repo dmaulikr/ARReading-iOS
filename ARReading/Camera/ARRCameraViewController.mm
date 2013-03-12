@@ -9,6 +9,7 @@
 #import "ARRCameraViewController.hpp"
 #import "ARRGLView.hpp"
 #import "GLMovieTexture.h"
+#import "ARRMovie.h"
 
 #import "QuartzHelpLibrary.h"
 
@@ -31,19 +32,26 @@ static float focalLength = 457.89;
 	[glView setCameraFrameSize:CGSizeMake(480, 360)];
     [glView setupOpenGLViewWithFocalX:focalLength focalY:focalLength];
 //	[glView startAnimation];  // startAnimation?    // 都不render看看
-    
 	[self.view addSubview:glView];
 	[glView setCodeListRef:codeListRef];  // 使 GLView 能得到 识别出的 Code的矩阵
+
+    [glView createTexture];
     
-    // create texture id
-    uint32_t targetTextureId = [glView createTexture];       // TODO: glView 需要知道 targetTextureId， 用来 create shader，并在 render时调用！
+    // Movie Texture
+    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"sintel.ipad" ofType:@"mp4"];    
+//    ARRMovie *movie = [[ARRMovie alloc] initWithPath:path frameRate:24];
+//    glView.targetTextureId = movie.targetTextureId;
+//    [movie start];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"sintel.ipad" ofType:@"mp4"];
-	movieTexture = [[GLMovieTexture alloc] initWithMovie:path context:glView.context];
     
-	[movieTexture setTextureId:targetTextureId];    // movieTexture -> targetTextureId
-	[movieTexture setLoop:YES];
-	[movieTexture play];
+    movie = [[GLMovieTexture alloc] initWithMovie:path context:glView.context];
+	[movie setTextureId:glView.targetTextureId];    // movieTexture -> targetTextureId
+	[movie setLoop:YES];
+	[movie play];
+    
+//    [glView startAnimation];  // startAnimation?
 }
 
 // Main Loop
