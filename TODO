@@ -1,7 +1,4 @@
+1、Model加载模块、Data
+2、开发界面
+3、算法：AR方向？模版匹配？。。
 
-
-1、加入了 MovieTexture，但是并没有显示出来任何东西。
-
-2、怀疑是 MovieTexture里的东西（NSTimer、AVPlayer）阻塞UI线程而卡？ 摄像头捕捉的分几个线程？？
-
-3、把 Camera 的 Capture Loop 里的 render 去掉，想模拟 MovieTextureTest 的工作环境。但是发现 displayLink 并没有很好工作？（只是在需要更新屏幕时调用？）
